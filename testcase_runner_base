@@ -1,0 +1,20 @@
+# testcase_runners/testcase_runner_base.py
+class TestCaseRunnerBase:
+    def __init__(self, device_info, username, password, expected_output, testname):
+        self.device_info = device_info
+        self.username = username
+        self.password = password
+        self.expected_output = expected_output
+        self.testname = testname
+
+    def run_test_case(self):
+        raise NotImplementedError("This method should be overridden by subclasses")
+
+    def check_output(self, actual_output):
+        if isinstance(self.expected_output, dict):
+            for key, expected_value in self.expected_output.items():
+                if key not in actual_output or actual_output[key] != expected_value:
+                    return False, key
+            return True, None
+        else:
+            return self.expected_output in actual_output, None
