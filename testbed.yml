@@ -1,0 +1,8 @@
+# testbed.yml
+clusters:
+  clusterA:
+    devices:
+      device1:
+        ip: "192.168.1.1"
+      device2:
+        ip: "192.168.1.2"
