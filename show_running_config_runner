@@ -1,0 +1,19 @@
+# testcase_runners/show_running_config_runner.py
+from testcase_runners.testcase_runner_base import TestCaseRunnerBase
+
+class ShowRunningConfigRunner(TestCaseRunnerBase):
+    def run_test_case(self):
+        results = {}
+        command = "show running-config"
+        actual_output = self._run_command(command)
+        is_success, failed_key = self.check_output(actual_output)
+        results[command] = {
+            'stdout': actual_output,
+            'success': is_success,
+            'failed_key': failed_key
+        }
+        return results
+
+    def _run_command(self, command):
+        # Simulate running the command and returning a parsed output
+        return "Current configuration"
