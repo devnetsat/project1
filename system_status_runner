@@ -1,0 +1,22 @@
+# testcase_runners/system_status_runner.py
+from testcase_runners.testcase_runner_base import TestCaseRunnerBase
+import requests
+
+class SystemStatusRunner(TestCaseRunnerBase):
+    def run_test_case(self):
+        results = {}
+        endpoint = "/api/v1/system"
+        actual_output = self._call_api(endpoint)
+        is_success, failed_key = self.check_output(actual_output)
+        results[endpoint] = {
+            'stdout': actual_output,
+            'success': is_success,
+            'failed_key': failed_key
+        }
+        return results
+
+    def _call_api(self, endpoint):
+        url = f"http://{self.device_info['ip']}{endpoint}"
+        response = requests.get(url, auth=(self.username, self.password))
+        # Simulate API response parsing
+        return {"status": "System operational"}
