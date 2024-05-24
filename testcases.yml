@@ -1,0 +1,13 @@
+# testcases.yml
+testcases:
+  - testid: 1
+    testname: "show_version"
+    expected_output:
+      version: "Cisco IOS Software"
+  - testid: 2
+    testname: "show_running_config"
+    expected_output: "Current configuration"
+  - testid: 3
+    testname: "system_status"
+    expected_output:
+      status: "System operational"
