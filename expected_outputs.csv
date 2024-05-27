@@ -1,0 +1,5 @@
+Test Case Name,Expected Output
+test_show_version,Expected output for show version
+test_show_running_config,Expected output for show running-config
+test_show_vlan,Expected output for show vlan
+test_show_ip_route,Expected output for show ip route
